@@ -63,11 +63,7 @@ int run_instruction(ProgramMemory* memory, int pc) {
 }
 
 void run_program(ProgramMemory* memory) {
-  int pc = 0;
-  for (;;) {
-    pc = run_instruction(memory, pc);
-    if (pc < 0) break;
-  }
+  for (int pc = 0; pc >= 0; pc = run_instruction(memory, pc));
 }
 
 std::unique_ptr<ProgramMemory> initialize_memory() {
