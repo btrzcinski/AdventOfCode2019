@@ -1,14 +1,15 @@
 module Main where
 
+import Data.Digits (digits)
 import Data.List (group)
 import Data.List.Ordered (isSorted)
 import Data.List.Split (endBy)
 
 hasTwiceRepeatingDigit :: Int -> Bool
-hasTwiceRepeatingDigit x = elem 2 $ map length $ group $ show x
+hasTwiceRepeatingDigit x = elem 2 $ map length $ group $ digits 10 x
 
 isIncreasingLeftToRight :: Int -> Bool
-isIncreasingLeftToRight x = isSorted (show x)
+isIncreasingLeftToRight x = isSorted $ digits 10 x
 
 possiblePasswords :: Int -> Int -> [Int]
 possiblePasswords min max = [p | p <- [min..max],
